@@ -1,15 +1,15 @@
 #!/bin/bash
 
-storage_account_name = 'mytccapstone'
-container_name = 'testcontainer'
+storage_account_name='mytccapstone'
+container_name='testcontainer'
 
-action = $1
-file_name = $2
+action=$1
+file_name=$2
 
 case $action in upload)
     echo "Uploading $file_name to $container_name..."
     az storage blob upload \
-      --account-name $storage_account \
+      --account-name $storage_account_name \
       --container-name $container_name \
       --name "$file_name" \
       --file "$file_name" \
@@ -21,7 +21,7 @@ case $action in upload)
   download)
     echo ">>>>>>>>>> Downloading $file_name from $container_name..."
     az storage blob download \
-      --account-name $storage_account \
+      --account-name $storage_account_name \
       --container-name $container_name \
       --name "$file_name" \
       --file "downloaded_$file_name" \
@@ -32,7 +32,7 @@ case $action in upload)
   list)
     echo "Listing contents of $container_name:"
     az storage blob list \
-      --account-name $storage_account \
+      --account-name $storage_account_name \
       --container-name $container_name \
       --output table \
       --auth-mode key
