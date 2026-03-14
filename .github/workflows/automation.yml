@@ -19,6 +19,7 @@ jobs:
       - name: Build Infrastructure
         run: |
           chmod +x ./deploy.sh
+          ./deploy.sh
           
       - name: Test Management Tool & Log
         run: |
@@ -33,5 +34,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: deployment-activity-log
-          path: storage_activity.log
+          path: activity_log.txt
           retention-days: 7
