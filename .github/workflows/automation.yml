@@ -27,7 +27,7 @@ jobs:
           ./manage_storage.sh list
           # Uploading a dummy file to verify the 'upload'  logic
           echo "GitHub Actions Test File" > download_file.txt
-          ./manage_storage.sh upload download_file.txt
+          ./manage_storage.sh upload download_file1.txt
         
       - name: Archive Production Logs
         uses: actions/upload-artifact@v4
