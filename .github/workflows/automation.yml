@@ -18,16 +18,16 @@ jobs:
 
       - name: Build Infrastructure
         run: |
-          chmod +x ./deploy_sh
+          chmod +x ./deploy.sh
           
       - name: Test Management Tool & Log
         run: |
-          chmod +x ./manage_storage.sh
+          chmod +x ./manage_storage_account.sh
           # Running a 'list' command to prove the connection works...
-          ./manage_storage.sh list
+          ./manage_storage_account.sh list
           # Uploading a dummy file to verify the 'upload'  logic
           echo "GitHub Actions Test File" > download_file.txt
-          ./manage_storage.sh upload download_file1.txt
+          ./manage_storage_account.sh upload download_file1.txt
         
       - name: Archive Production Logs
         uses: actions/upload-artifact@v4
