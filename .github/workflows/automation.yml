@@ -2,7 +2,7 @@ name: Automating Azure Cloud Storage deployment
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ master ]  
 
 jobs:
   deploy-and-test:
