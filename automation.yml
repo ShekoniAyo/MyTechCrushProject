@@ -1,0 +1,25 @@
+name: Automating Azure Cloud Storage deployment
+
+on:
+  push:
+    branches: [ main ]  
+
+jobs:
+  deploy-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build Infrastructure
+        run: |
+          chmod +x ./deploy_sh
+          
+      - name: Test Management Script
+        run: |
+          chmod +x ./manage_storage_account.sh
