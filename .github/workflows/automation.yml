@@ -20,6 +20,18 @@ jobs:
         run: |
           chmod +x ./deploy_sh
           
-      - name: Test Management Script
+      - name: Test Management Tool & Log
         run: |
-          chmod +x ./manage_storage_account.sh
+          chmod +x ./manage_storage.sh
+          # Running a 'list' command to prove the connection works...
+          ./manage_storage.sh list
+          # Uploading a dummy file to verify the 'upload'  logic
+          echo "GitHub Actions Test File" > download_file.txt
+          ./manage_storage.sh upload download_file.txt
+        
+      - name: Archive Production Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-activity-log
+          path: storage_activity.log
+          retention-days: 7
