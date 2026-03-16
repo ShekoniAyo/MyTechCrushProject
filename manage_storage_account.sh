@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+set -x
 
 storage_account_name='mytccapstone'
 container_name='testcontainer'

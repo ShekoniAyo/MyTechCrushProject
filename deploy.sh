@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+set -x
+
 echo '>>>>>>>>>> Creating Resource Group...'
 
 az group create --name TechCrush --location eastus
