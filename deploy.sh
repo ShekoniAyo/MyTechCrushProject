@@ -10,7 +10,7 @@ CONTAINER_NAME="testcontainer"
 
 echo '>>>>>>>>>> Creating Resource Group...'
 
-az group create --name "$RESOURCE_GROUP"--location eastus
+az group create --name "$RESOURCE_GROUP" --location eastus
 echo '>>>>>>>>>> Resource Group Created successfully.'
 echo '>>>>>>>>>> Checking For Storage Group...'
 
