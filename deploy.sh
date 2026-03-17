@@ -2,30 +2,38 @@
 set -e
 set -x
 
+RESOURCE_GROUP="TechCrush"
+STORAGE_ACCOUNT="mytccapstone"
+CONTAINER_NAME="testcontainer"
+
+
+
 echo '>>>>>>>>>> Creating Resource Group...'
 
-az group create --name TechCrush --location eastus
+az group create --name "$RESOURCE_GROUP"--location eastus
 echo '>>>>>>>>>> Resource Group Created successfully.'
 echo '>>>>>>>>>> Checking For Storage Group...'
 
-az group exists --name TechCrush
+az group exists --name "$RESOURCE_GROUP"
 
 echo '>>>>>>>>>> Creating Storage Account...'
 
-az storage account create --name mytccapstone --resource-group TechCrush --location eastus --sku Standard_LRS --allow-blob-public-access true
+az storage account create --name "$STORAGE_ACCOUNT" --resource-group $RESOURCE_GROUP" --location eastus --sku Standard_LRS --allow-blob-public-access true
 
-echo '>>>>>>>>>> Storage Account created successfully.'
+echo '>>>>>>>>>> Storage Account "$STORAGE_ACCOUNT" created successfully.'
 echo '>>>>>>>>>> Creating storage container...'
 
-az storage container create --name testcontainer --account-name mytccapstone --public-access blob
+az storage container create --name "$CONTAINER_NAME" --account-name "$STORAGE_ACCOUNT" --public-access blob
 
-echo '>>>>>>>>>> storage container created successfully.'
-echo '>>>>>>>>>> diplaying list of resource in TechCrush...'
+echo '>>>>>>>>>> storage container "$CONTAINER_NAME" created successfully.'
+echo '>>>>>>>>>> diplaying list of resource in "$RESOURCE_GROUP"...'
 
-az resource list --resource-group TechCrush --output table
+az resource list --resource-group "$RESOURCE_GROUP" --output table
 
-echo '>>>>>>>>>> displaying list of containers in storage account...'
+echo '>>>>>>>>>> displaying list of containers in storage account "$STORAGE_ACCOUNT"...'
 
-az storage blob list --account-name mytccapstone --container-name testcontainer --output table
-
-echo '>>>>>>>>>> Storage Account created succesfully'
+if [ -z "$(az storage blob list --account-name "$STORAGE_ACCOUNT" --container-name "$CONTAINER_NAME" --output tsv)" ]; then 
+    echo "Container is empty"
+else
+  echo "Blobs found"
+fi
