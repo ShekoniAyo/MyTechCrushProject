@@ -18,7 +18,7 @@ az group exists --name "$RESOURCE_GROUP"
 
 echo '>>>>>>>>>> Creating Storage Account...'
 
-az storage account create --name "$STORAGE_ACCOUNT" --resource-group $RESOURCE_GROUP" --location eastus --sku Standard_LRS --allow-blob-public-access true
+az storage account create --name "$STORAGE_ACCOUNT" --resource-group "$RESOURCE_GROUP" --location eastus --sku Standard_LRS --allow-blob-public-access true
 
 echo '>>>>>>>>>> Storage Account "$STORAGE_ACCOUNT" created successfully.'
 echo '>>>>>>>>>> Creating storage container...'
