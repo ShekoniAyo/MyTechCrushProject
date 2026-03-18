@@ -2,9 +2,9 @@
 set -e
 set -x
 
-RESOURCE_GROUP="TechCrush"
-STORAGE_ACCOUNT="mytccapstone"
-CONTAINER_NAME="testcontainer"
+RESOURCE_GROUP=$1
+STORAGE_ACCOUNT=$2
+CONTAINER_NAME=$3
 
 
 

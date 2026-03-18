@@ -19,7 +19,7 @@ jobs:
       - name: Build Infrastructure
         run: |
           chmod +x ./deploy.sh
-          ./deploy.sh
+          ./deploy.sh TechCrush mytccapstone testcontainer
           
       - name: Test Management Tool & Log
         run: |
@@ -28,7 +28,7 @@ jobs:
           ./manage_storage_account.sh list
           # Uploading a dummy file to verify the 'upload'  logic
           echo "GitHub Actions Test File" > download_file1.txt
-          ./manage_storage_account.sh upload download_file1.txt
+          ./manage_storage_account.sh upload download_file1.txt mytccapstone testcontainer
         
       - name: Archive Production Logs
         uses: actions/upload-artifact@v4
