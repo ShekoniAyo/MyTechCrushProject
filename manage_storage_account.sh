@@ -2,11 +2,12 @@
 set -e
 set -x
 
+action=$1
+file_name=$2
+
 storage_account_name=$3
 container_name=$4
 
-action=$1
-file_name=$2
 
 case $action in upload)
     echo "Uploading $file_name to $container_name..."
