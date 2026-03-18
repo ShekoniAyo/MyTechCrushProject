@@ -2,8 +2,8 @@
 set -e
 set -x
 
-storage_account_name='mytccapstone'
-container_name='testcontainer'
+storage_account_name=$3
+container_name=$4
 
 action=$1
 file_name=$2
