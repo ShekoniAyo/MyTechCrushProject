@@ -1,4 +1,4 @@
-name: Automating Azure Cloud Storage deployment
+name: Automating Azure Cloud Storage Deployment
 
 on:
   push:
@@ -11,12 +11,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Login to Azure
+      - name: Logging in into Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Build Infrastructure
+      - name: Building Infrastructure...
         run: |
           chmod +x ./deploy.sh
           ./deploy.sh TechCrush mytccapstone testcontainer
@@ -26,11 +26,13 @@ jobs:
           chmod +x ./manage_storage_account.sh
           # Running a 'list' command to prove the connection works...
           ./manage_storage_account.sh list "" mytccapstone testcontainer
+          
           # Uploading a dummy file to verify the 'upload' logic
+         
           echo "GitHub Actions Test File" > download_file1.txt
           ./manage_storage_account.sh upload download_file1.txt mytccapstone testcontainer
         
-      - name: Archive Production Logs
+      - name: Archiving Production Logs...
         uses: actions/upload-artifact@v4
         with:
           name: deployment-activity-log

@@ -4,7 +4,6 @@ set -x
 
 action=$1
 file_name=$2
-
 storage_account_name=$3
 container_name=$4
 
