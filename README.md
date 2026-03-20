@@ -55,7 +55,7 @@ Fully automated pipeline that handles the deployment lifecycle:
 1. **Authentication** — Logs into Azure via a Service Principal using an encrypted GitHub Secret (`AZURE_CREDENTIALS`)
 2. **Environment Setup** — Automatically sets execution permissions (`chmod +x`) on all scripts
 3. **Deployment** — Runs the infrastructure script to ensure storage is always ready
-4. **Verification** — Executes a test upload and captures `storage_activity.log` as a build artifact for proof of work
+4. **Verification** — Executes a test upload and captures `activity_log.txt` as a build artifact for proof of work
 
 ---
 
@@ -82,7 +82,7 @@ By combining Bash scripting with Azure and GitHub Actions, this project delivers
 .
 ├── deploy.sh                        # Infrastructure provisioning script
 ├── manage_storage.sh                # CLI tool for blob management
-├── storage_activity.log             # Auto-generated audit log
+├── activity_log.txt             # Auto-generated audit log
 └── .github/
     └── workflows/
         └── main_deploy.yml          # CI/CD pipeline definition
